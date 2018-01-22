@@ -18,7 +18,7 @@ import java.io.IOException;
 @WebServlet(name = "CreateStudentController")
 public class CreateStudentController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("jsp/createStudent.jsp");
+        final RequestDispatcher rd = request.getRequestDispatcher("jsp/createStudent.jsp");
         rd.forward(request, response);
     }
 
@@ -27,5 +27,7 @@ public class CreateStudentController extends HttpServlet {
         final int studentMarks = Integer.parseInt(request.getParameter("inputMarks"));
         final StudentDao studentDao = new StudentDao();
         studentDao.createStudent(studentName, studentMarks);
+        final RequestDispatcher rd = request.getRequestDispatcher("jsp/marks.jsp");
+        rd.forward(request,response);
     }
 }
