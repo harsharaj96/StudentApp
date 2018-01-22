@@ -1,18 +1,21 @@
+/*
+ * Created by Sandeep Tadepalli on 20/01/18 23:11
+ * Copyright (c) 2018. All rights reserved.
+ */
+
 package com.ooad.web.Dao;
 
 import com.ooad.web.Model.Student;
 import com.ooad.web.utils.database;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class StudentDao {
     public Student getStudent(final int sId){
-        final String connectionUrl = "jdbc:mysql://localhost:3306/studentDb?useSSL=false";
-        final String username = database.username;
-        final String password = database.password;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            final Connection con = DriverManager.getConnection(connectionUrl,username,password);
+            final Connection con = database.getConnection();
             final Statement st = con.createStatement();
             final String getStudentQuery = "SELECT * FROM student WHERE id = " + sId;
             final ResultSet rs = st.executeQuery(getStudentQuery);
@@ -29,5 +32,17 @@ public class StudentDao {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public boolean createStudent(String studentName, int studentMarks) {
+        try {
+            final Connection con = database.getConnection();
+            final Statement st = con.createStatement();
+//            final
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }

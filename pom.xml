@@ -26,6 +26,27 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>6.0.6</version>
     </dependency>
+      <dependency>
+          <groupId>com.sun.jersey</groupId>
+          <artifactId>jersey-server</artifactId>
+          <version>1.8</version>
+      </dependency>
+      <dependency>
+          <groupId>com.sun.jersey</groupId>
+          <artifactId>jersey-json</artifactId>
+          <version>1.14</version>
+      </dependency>
+      <!--    <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>1.18.1</version>
+          </dependency>-->
+      <!-- https://mvnrepository.com/artifact/com.owlike/genson -->
+      <dependency>
+          <groupId>com.owlike</groupId>
+          <artifactId>genson</artifactId>
+          <version>1.4</version>
+      </dependency>
 
 
   </dependencies>

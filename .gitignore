@@ -1,0 +1,7 @@
+/target/
+/bin/
+.classpath
+.idea/
+.project
+.settings/
+StudentApp.iml

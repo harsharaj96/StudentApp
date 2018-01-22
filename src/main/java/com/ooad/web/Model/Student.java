@@ -1,3 +1,8 @@
+/*
+ * Created by Sandeep Tadepalli on 20/01/18 23:11
+ * Copyright (c) 2018. All rights reserved.
+ */
+
 package com.ooad.web.Model;
 
 //Created by Harsha Raj on 20-01-2018
@@ -34,7 +39,6 @@ public class Student {
     public String getImageUrl() {
         return imageUrl;
     }
-
 
 
     public Student(int id, String name, int marks, String imageUrl) {
