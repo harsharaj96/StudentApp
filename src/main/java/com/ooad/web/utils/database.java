@@ -12,7 +12,8 @@ import java.sql.SQLException;
 public class database {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "sandeep";
-    private static final String CONNECTION_URL = "jdbc:mysql://localhost:3306/jsp?useSSL=false";
+    private static final String DATABASE_NAME = "jsp";
+    private static final String CONNECTION_URL = "jdbc:mysql://localhost:3306/" + DATABASE_NAME + "?useSSL=false";
 
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");

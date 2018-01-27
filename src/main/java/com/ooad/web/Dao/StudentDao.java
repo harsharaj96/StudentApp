@@ -36,7 +36,7 @@ public class StudentDao {
         return null;
     }
 
-    public boolean createStudent(String studentName, int studentMarks) {
+    public boolean createStudent(String studentName, int studentMarks, String url) {
         try {
             final Connection con = database.getConnection();
             final Statement st = con.createStatement();
@@ -45,7 +45,7 @@ public class StudentDao {
             final PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setString (1, studentName);
             preparedStmt.setInt (2, studentMarks );
-            preparedStmt.setString   (3, "#");
+            preparedStmt.setString(3, url);
             preparedStmt.execute();
         } catch (Exception e) {
             e.printStackTrace();
