@@ -11,28 +11,70 @@
     <title>Student Marks</title>
     <%--Boot Strap --%>
     <!-- Latest compiled and minified CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#report").hide();
+        });
+    </script>
+
+    <script type="text/javascript">
+        function pageRedirect() {
+            window.location.replace("/createstudent");
+        }
+    </script>
+
+    <script type="text/javascript">
+        function pageRedirectBack() {
+            window.location.replace("/student");
+        }
+    </script>
+
+
 </head>
-<body>
+
+
+<body bgcolor="#ffffff" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" link="#3333cc"
+      vlink="#3333cc" alink="#3333cc">
+
 <div id="form">
-    <p class="h3 center">Student Report Card step 1</p>
-    <div class="row">
-        <div class="col">
-            <input type="number" id="studentId" name="studentId" class="form-control" placeholder="Enter student id">
-        </div>
+    <br><br>
+    <div align="center">
+        <font color="#2E2E2E" size="10" face="Arial, Helvetica, sans-serif"><strong>Student Report
+            Portal</strong></font><br>
     </div>
-    <button class="btn btn-primary" id="btn" onclick="getStudent()">Submit</button>
+    <br><br>
+    <div class="row">
+
+        <div class="col-md-2">
+            <h4><font size="4.5"><strong>Enter Student Id :</strong></font></h4>
+            <br><br>
+            <h4><font size="4.5"><strong>Create New Entry :</strong></font></h4>
+        </div>
+
+        <div class="col-md-2">
+
+            <input type="number" id="studentId" name="studentId" class="form-control" placeholder="Enter student id">
+            <br><br>
+            <button class="btn btn-primary" id="create" onclick="pageRedirect()">Create</button>
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn btn-primary" id="btn" onclick="getStudent()">Submit</button>
+        </div>
+
+    </div>
 </div>
-<div id="report">
-    <p class="h3">Report Card</p>
-    <p class="col-md-2">id</p>
-    p#
-    <p class="col-md-2">Name</p>
-    <p class="col-md-2">Marks</p>
-</div>
+
 <script>
     function getStudent() {
         console.log("entered Here");
@@ -41,54 +83,59 @@
         console.log(url1);
         $.get(url1, function (result) {
             console.log(result);
+            $('#stdntId').html(result.id);
+            $('#stdntName').html(result.name);
+            $('#stdntMarks').html(result.marks);
+            img = document.createElement('img');
+            src = result.imageUrl;
+            img.src = src;
+            img.className += " img-thumbnail";
+            img.width = 150;
+            img.height = 200;
+            $("#stdntImg").append(img);
             $("#form").hide();
             $("#report").show();
         });
     }
 </script>
 
-<%--
+<div id="report">
+    <br><br>
+    <div align="center">
+        <font color="#2E2E2E" size="8" face="Arial, Helvetica, sans-serif"><strong>Student Report</strong></font><br>
+    </div>
+    <br><br>
 
-    <% final Student student = (Student) request.getAttribute("student"); %>
-
-    <h1> Student Report </h1>
     <div class="row">
         <div class="col-md-2">
-            <p class="h4">Id</p>
-            <p id="studentId"><%= student.getId()%> </p>
+            <h4><font size="4.5"><strong>Student ID : </strong></font></h4>
+            <br>
+            <h4><font size="4.5"><strong>Name :</strong></font></h4>
+            <br>
+            <h4><font size="4.5"><strong>Marks :</strong></font></h4>
+            <br>
+            <h4><font size="4.5"><strong>Image :</strong></font></h4>
+            <br><br><br><br><br>
+
         </div>
-    </div>
-    <div class="row">
+
         <div class="col-md-2">
-            <p class="h4">Name</p>
-            <p id="studentName"><%= student.getName()%></p>
+            <!-- Extract values -->
+            <div id="stdntId" class="col-md-2"></div>
+            <br><br><br>
+            <div id="stdntName" class="col-md-2"></div>
+            <br><br><br>
+            <div id="stdntMarks" class="col-md-2"></div>
+            <br><br><br>
+            <div id="stdntImg">
+
+            </div>
         </div>
+
     </div>
-    <div class="row">
-        <div class="col-md-2">
-            <p class="h4">Marks</p>
-            <p id="studentMarks"><%= student.getMarks()%></p>
-        </div>
+    <div align="center">
+        <button class="btn btn-primary" id="back" onclick="pageRedirectBack()">Back</button>
     </div>
-    <div class="row">
-        <div class="col-md-2">
-            <img src="<%= student.getImageUrl()%>" alt="studentImage">
-        </div>
-    </div>
-
-    <div class="row">
-        <button class="btn" type="button" id = "home">Home</button>
-    </div>
---%>
-
-
-
-
-
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</div>
 </body>
 </html>
